@@ -2,16 +2,16 @@ import React from 'react';
 import { Container, Image } from 'react-bootstrap';
 import img from './../../assets/about.png'
 
-const About = () => {
+const RestaurantHour = () => {
     return (
         <div>
-            <Container className='d-flex py-5 align-items-center'>
+            <Container className='d-flex py-5 align-items-center flex-column flex-sm-row'>
                 <div>
                     <Image src={img} width={400} rounded alt="" />
                 </div>
                 <section className="flex-grow-1 ms-5 ">
                     <Container>
-                        <h2 className='text-center custom-color'>Restaurant Hours</h2>
+                        <h2 className='text-center custom-color mb-4'>Restaurant Hours</h2>
                         <table className="table">
                             <thead>
                                 <tr>
@@ -66,4 +66,4 @@ const About = () => {
     );
 };
 
-export default About;
+export default RestaurantHour;
