@@ -26,7 +26,7 @@ const About = () => {
             <div style={overlayStyle}>
                 <Container>
                     <Row gutter={20} className='custom-color py-4 mx-auto'  >
-                        <Col xs={12} sm={3} className='text-center bg-white rounded py-2 mx-4 '>
+                        <Col xs={12} sm={3} className='text-center bg-white rounded py-2 m-4 '>
                             <Image src={person1} width={80} roundedCircle />
                             <div className='mt-4'>
                                 <h4>Khadiza khatun</h4>
@@ -34,19 +34,19 @@ const About = () => {
                                 </p>
                             </div>
                         </Col>
-                        <Col xs={12} sm={3} className='text-center bg-white rounded py-2 mx-4'>
+                        <Col xs={12} sm={3} className='text-center bg-white rounded py-2 m-4'>
                             <Image src={person2} width={80} roundedCircle />
                             <div className='mt-4'>
-                                <h4>Khadiza khatun</h4>
-                                <p><small>Owner</small>
+                                <h4>Mohammad Sowrav</h4>
+                                <p><small>General Manager</small>
                                 </p>
                             </div>
                         </Col>
-                        <Col xs={12} sm={3} className='text-center bg-white rounded py-2 mx-4'>
+                        <Col xs={12} sm={3} className='text-center bg-white rounded py-2 m-4'>
                             <Image src={person3} width={80} roundedCircle />
                             <div className='mt-4'>
-                                <h4>Khadiza khatun</h4>
-                                <p><small>Owner</small>
+                                <h4>Md. Shahidullah</h4>
+                                <p><small>Marketing Manager</small>
                                 </p>
                             </div>
                         </Col>

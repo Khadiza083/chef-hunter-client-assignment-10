@@ -18,7 +18,7 @@ const Navigationbar = () => {
                     </Nav>
                     <Nav className='d-flex align-items-center'>
                         <Nav.Link href="#deets"><FaUserCircle size={35}/></Nav.Link>
-                        <button className='custom-bg border-0 px-3 text-white rounded py-2'>Login</button>
+                        <Link to='/loginLayout'><button className='custom-bg border-0 px-3 text-white rounded py-2'>Login</button></Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
