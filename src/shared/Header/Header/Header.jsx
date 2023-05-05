@@ -1,9 +1,7 @@
 import React from 'react';
-// import Navbar from '../Navbar/Navbar';
 import { Button, Col, Container } from 'react-bootstrap';
 import banner from './../../../assets/banner.jpg'
 import Navigationbar from '../NavigationBar/Navigationbar';
-import banner1 from '../../../assets/chef-1.png'
 import './Header.css'
 
 const Header = () => {
@@ -36,13 +34,7 @@ const Header = () => {
             <p className='text-light'>Bringing your favorite flavors straight to your doorstep - order online and enjoy a hassle-free mealtime experience.</p>
             <button className='custom-bg border-0 px-3 text-white rounded py-2'>Get started</button>
           </div>
-          {/* <Col xs={6} md={4}>
-            <img className='cover'
-              src={banner1}
-              width={262}
-              height={445}
-              alt="" />
-          </Col> */}
+          
         </Container>
       </div>
 
