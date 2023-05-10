@@ -1,32 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Container } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
+import { useLoaderData } from 'react-router-dom';
 import Details from './Details';
 
-const ChefDetails = () => {
-    const [details, setDetails] = useState([])
 
-    useEffect(()=>{
-        fetch('http://localhost:5000/chefInfo')
-        .then(res => res.json())
-        .then(data => setDetails(data))
-        .catch(error => console.log(error))
-    },[])
+const ChefDetails = () => {
+    const [chefs, setChefs] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/chefInfo/')
+            .then(res => res.json())
+            .then(data => setChefs(data))
+    }, [])
 
     return (
         <Container>
-            <h3 className='custom-color text-center'>Our chef's</h3>
+            <h2>Our chef's</h2>
 
-            <div className='row col-sm-6 mx-auto'>
-                {
-                    details.map(d =><Details 
-                        key={d.chef_id}
-                        details ={d}
-                    ></Details>)
-                }
-            </div>
-          
+            <Row gutter={20} className='py-4 mx-auto'  >
+                    {
+                        chefs.map(chef => <Details
+                            key={chef.chef_id}
+                            chef={chef}></Details>)
+                    }
+             </Row>
+
         </Container>
     );
-};
+}; Container
 
 export default ChefDetails;

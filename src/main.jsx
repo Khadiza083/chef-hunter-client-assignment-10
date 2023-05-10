@@ -11,6 +11,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProviders>
     <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
   </AuthProviders>
 )
