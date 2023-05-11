@@ -12,13 +12,13 @@ const ChefRecipe = () => {
     const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/chefInfo/${id}`)
+        fetch(`https://chef-recipe-hunter-server-khadiza083.vercel.app/chefInfo/${id}`)
             .then(res => res.json())
             .then(data => setChefRecipeDetails(data))
     }, [])
 
     useEffect( ()=>{
-        fetch(`http://localhost:5000/recipes/${id}`)
+        fetch(`https://chef-recipe-hunter-server-khadiza083.vercel.app/recipes/${id}`)
         .then(res => res.json())
         .then(data => setRecipes(data))
     } , [])
