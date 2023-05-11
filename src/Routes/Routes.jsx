@@ -9,6 +9,8 @@ import ChefRecipeLayout from "../layout/chefRecipeLayout";
 import Login from "../Pages/Login/Login";
 import ChefRecipe from "../Pages/ChefRecipe/ChefRecipe";
 import PrivateRoute from "./PrivateRoute";
+import Blog from "../Pages/Blog";
+import NotFound from "../Pages/NotFound/NotFound";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -48,6 +50,14 @@ import PrivateRoute from "./PrivateRoute";
         },
       ]
     },
+    {
+      path: '/blog',
+      element: <Blog></Blog>
+    },
+    {
+      path: '*', 
+      element: <NotFound></NotFound>
+    }
     
   ]);
 

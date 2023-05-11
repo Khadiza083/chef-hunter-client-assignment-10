@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
 import { Card, Col, Image, Row } from 'react-bootstrap';
 import { FaHeart, FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
-import { Link, useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ChefRecipeDetails = ({ recipe }) => {
 
-
+    const notify = () => toast.success("That recipe is added to your favorite list!");
 
     const { image, cooking_method, recipe_name, ingredients, rating, id } = recipe
 
@@ -37,16 +37,17 @@ const ChefRecipeDetails = ({ recipe }) => {
                             </small></p>
                         </div>
                         <div className='d-flex'>
-                            <FaHeart size={20} className='me-4 my-auto'></FaHeart>
+                            <button onClick={notify} className='me-4 my-auto bg-white rounded border-0'><span className='text-danger'><FaHeart size={25} ></FaHeart></span></button>
+                            <ToastContainer />
                             <div>
-                                
-                                    <Rating 
-                                        placeholderRating={rating}
-                                        readonly
-                                        emptySymbol={<FaRegStar size={20}></FaRegStar>}
-                                        placeholderSymbol={<FaStar size={20} className='text-warning'></FaStar>}
-                                        fullSymbol={<FaStar size={20}></FaStar>}
-                                    />
+
+                                <Rating
+                                    placeholderRating={rating}
+                                    readonly
+                                    emptySymbol={<FaRegStar size={20}></FaRegStar>}
+                                    placeholderSymbol={<FaStar size={20} className='text-warning'></FaStar>}
+                                    fullSymbol={<FaStar size={20}></FaStar>}
+                                />
                                 <span className='ms-2'>{rating}</span>
                             </div>
                         </div>

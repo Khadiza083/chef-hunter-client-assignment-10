@@ -15,6 +15,8 @@ const Login = () => {
     const navigate = useNavigate()
     const googleProvider = new GoogleAuthProvider();
 
+    const from = location.state?.from?.pathname || '/'
+
     const githubProvider = new GithubAuthProvider();
     const { signIn, popupSignIn } = useContext(AuthContext)
     const [error, setError] = useState('');
@@ -30,7 +32,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                navigate('/chefRecipe')
+                navigate(from, {replace: true})
             })
             .catch(error => {
                 const err = error.message;

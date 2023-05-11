@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaBeer, FaUserCircle } from 'react-icons/fa';
 import './NavigationBar.css'
 import { AuthContext } from '../../../Providers/AuthProviders';
+import ActiveLink from '../ActiveLink/ActiveLink';
 
 
 const Navigationbar = () => {
@@ -19,8 +20,8 @@ const Navigationbar = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto ms-4 ">
-                        <Link to='/' className='text-decoration-none ms-4 text-dark'>Home</Link>
-                        <Link to='/blog' className='text-decoration-none ms-4 text-dark'>Blog</Link>
+                        <ActiveLink to='/' >Home</ActiveLink>
+                        <ActiveLink to='/blog'>Blog</ActiveLink>
 
                     </Nav>
                     {
