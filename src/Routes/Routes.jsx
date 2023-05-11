@@ -5,6 +5,10 @@ import Main from "../layout/Main";
 import LoginLayout from "../layout/LoginLayout";
 import RegistrationLayout from "../layout/RegistrationLayout";
 import ChefDetails from "../Pages/Home/ChefDetails/ChefDetails";
+import ChefRecipeLayout from "../layout/chefRecipeLayout";
+import Login from "../Pages/Login/Login";
+import ChefRecipe from "../Pages/ChefRecipe/ChefRecipe";
+import PrivateRoute from "./PrivateRoute";
   const router = createBrowserRouter([
     {
       path: "/",
@@ -13,7 +17,6 @@ import ChefDetails from "../Pages/Home/ChefDetails/ChefDetails";
         {
           path: '/',
           element: <ChefDetails></ChefDetails>,
-          loader: () => fetch(`http://localhost:5000/chefInfo/`)
         }
       ]
     },
@@ -22,14 +25,30 @@ import ChefDetails from "../Pages/Home/ChefDetails/ChefDetails";
       element: <LoginLayout></LoginLayout>,
       children: [
         {
+          path: '/loginLayout',
+          element: <Login></Login>
+        },
+        {
           path: 'registrationLayout'
-        }
+        },
+        
       ]
     },
     {
       path: 'registerLayout',
       element: <RegistrationLayout></RegistrationLayout>
-    }
+    },
+    {
+      path: '/chefRecipe',
+      element: <ChefRecipeLayout></ChefRecipeLayout>,
+      children: [
+        {
+          path: ':id',
+          element: <PrivateRoute><ChefRecipe></ChefRecipe></PrivateRoute>
+        },
+      ]
+    },
+    
   ]);
 
   export default router;

@@ -1,10 +1,21 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React, { useContext, useEffect, useState } from 'react';
 import { Card, Col, Image } from 'react-bootstrap';
 import { FaThumbsUp } from 'react-icons/fa';
+import { Link, useParams } from 'react-router-dom';
+import { AuthContext } from '../../../Providers/AuthProviders';
 
 const Details = ({ chef }) => {
-    const { chef_name, chef_image, experience, likes, recipes } = chef
-    console.log(chef_name);
+    
+    const [recipes, setRecipes] = useState([])
+    const { chef_name, chef_image, experience, likes, chef_id } = chef
+
+    useEffect( ()=> {
+        fetch(`http://localhost:5000/recipes/${chef_id}`)
+        .then(res => res.json())
+        .then(data => setRecipes(data))
+    })
+    // console.log(chef_name);
     return (
 
         <Col xs={12} sm={3} className='text-center rounded py-2 m-4 border-1'>
@@ -15,12 +26,14 @@ const Details = ({ chef }) => {
                 </div>
                 <Card.Body>
                     <Card.Title>{chef_name}</Card.Title>
-                    <Card.Text>
+                    <div>
                         <small className='me-4'>{experience}</small>
                         <small className=''><FaThumbsUp size={20} className='mb-2'></FaThumbsUp> {likes}</small>
-                        <p>No. of Recipes: {recipes.length}</p>
-                    </Card.Text>
-                    <div><button className='custom-bg border-0 px-4 text-white rounded py-2 my-2'>View Recipe</button></div>
+                        <h6>No. of Recipes: {recipes.length}</h6>
+                    </div>
+                    <div><Link to={`/chefRecipe/${chef_id}`}> <button className='custom-bg border-0 px-4 text-white rounded py-2 my-2'>View Recipe</button>
+                    </Link>
+                    </div>
                 </Card.Body>
             </Card>
         </Col>

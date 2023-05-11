@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useContext, useState } from 'react';
 import { Button, Container, Form, Image } from 'react-bootstrap';
 import img from './../../assets/login.jpg'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../Providers/AuthProviders';
 
@@ -9,6 +10,9 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { GithubAuthProvider } from "firebase/auth";
 
 const Login = () => {
+
+    const location = useLocation()
+    const navigate = useNavigate()
     const googleProvider = new GoogleAuthProvider();
 
     const githubProvider = new GithubAuthProvider();
@@ -26,6 +30,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                navigate('/chefRecipe')
             })
             .catch(error => {
                 const err = error.message;
