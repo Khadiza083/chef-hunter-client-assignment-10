@@ -6,7 +6,7 @@ import { AuthContext } from '../../Providers/AuthProviders';
 
 const Registration = () => {
     const { createUser, user, updateP, setLoading } = useContext(AuthContext)
-    console.log(user);
+    // console.log(user);
     const [error, setError] = useState('')
     const handleRegister = (event) => {
         event.preventDefault();
@@ -28,11 +28,11 @@ const Registration = () => {
 
         if (name, email, password, photo) {
 
-            console.log(photo, name);
+            // console.log(photo, name);
             createUser(email, password)
                 .then(result => {
                     const loggedUser = result.user;
-                    console.log(loggedUser);
+                    // console.log(loggedUser);
                     updateP(name, photo)
                         .then(() => {
                             setLoading(false)

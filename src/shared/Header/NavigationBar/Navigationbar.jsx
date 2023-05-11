@@ -11,7 +11,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 const Navigationbar = () => {
     const { user, logOut } = useContext(AuthContext)
 
-    console.log(user?.photoURL);
+    // console.log(user?.photoURL);
     const handleLogout = () => {
         logOut().then()
             .catch(err => console.log(err.message))
@@ -30,11 +30,14 @@ const Navigationbar = () => {
                     {
                         user ?
                             <Nav className='d-flex align-items-center'>
-                                <button onClick={handleLogout} className='custom-bg border-0 px-3 text-white rounded py-2'>Logout</button>
+
                                 <Nav.Link href="#deets">
-                                    <Image title={user.email} width={50} height={50} src={user.photoURL} roundedCircle/>
-                                    
+                                    <Image title={user.email} width={50} height={50} src={user.photoURL} roundedCircle />
+
                                 </Nav.Link>
+
+                                <button onClick={handleLogout} className='custom-bg border-0 px-3 text-white rounded py-2'>Logout</button>
+
                             </Nav> :
                             <Nav className='d-flex align-items-center'>
                                 <Nav.Link href="#deets"><FaUserCircle size={35} /></Nav.Link>
