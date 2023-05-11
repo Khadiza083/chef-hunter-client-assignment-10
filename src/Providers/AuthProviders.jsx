@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext(null)
@@ -11,6 +11,14 @@ const AuthProviders = ({children}) => {
     // const [user, setUser] = useState(null)
     const [user, setUser] = useState({})
     const [loading, setLoading] = useState(false)
+
+    const updateP = (name, photo) => {
+        setLoading(true);
+        return updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photo,
+        });
+      };
 
     const logOut = () =>{
         setLoading(true)
@@ -48,7 +56,9 @@ const AuthProviders = ({children}) => {
         signIn,
         popupSignIn,
         logOut,
-        loading
+        loading,
+        updateP,
+        setLoading
     }
     return (
         <AuthContext.Provider value={authInfo}>

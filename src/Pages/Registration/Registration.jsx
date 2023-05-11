@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 
 const Registration = () => {
-    const { createUser } = useContext(AuthContext)
+    const { createUser, user, updateP, setLoading } = useContext(AuthContext)
+    console.log(user);
     const [error, setError] = useState('')
     const handleRegister = (event) => {
         event.preventDefault();
@@ -16,28 +17,39 @@ const Registration = () => {
         const name = form.name.value;
         const photo = form.photo.value;
 
-        console.log(email, password, createUser)
+        console.log(email, password)
 
         // !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)
-        if(!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password)){
+        if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password)) {
             setError('Password must be 6 characters, at least one letter and one number')
             return
         }
 
+
         if (name, email, password, photo) {
 
+            console.log(photo, name);
             createUser(email, password)
                 .then(result => {
                     const loggedUser = result.user;
                     console.log(loggedUser);
+                    updateP(name, photo)
+                        .then(() => {
+                            setLoading(false)
+                            // event.target.reset();
+                        }).catch((error) => {
+                            console.log(error.message);
+                        });
                 })
                 .catch(error => {
                     const err = error.message;
                     setError(err);
                 })
+
         }
- 
-    } 
+
+
+    }
     return (
         <Container className='d-flex align-items-center flex-sm-row flex-column'>
             <div className='m-4'>
